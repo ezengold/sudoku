@@ -12,12 +12,15 @@ let mainWindow;
 // Listen for app to be ready
 app.on('ready', function(){
   // Create new window
-  mainWindow = new BrowserWindow({});
+  mainWindow = new BrowserWindow({
+    height: 700,
+    width: 1100
+  });
   // Load html in window
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
     protocol: 'file:',
-    slashes:true
+    slashes:true,
   }));
   // Quit app when closed
   mainWindow.on('closed', function(){
