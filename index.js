@@ -15,7 +15,10 @@ app.on('ready', function () {
 	mainWindow = new BrowserWindow({
 		height: 700,
 		width: 1100,
-		resizable: false
+		resizable: false,
+		// webPreferences: {
+		// 	nodeIntegration: true
+		// }
 	});
 	// Load html in window
 	mainWindow.loadURL(url.format({

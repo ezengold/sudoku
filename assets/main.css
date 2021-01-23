@@ -38,6 +38,14 @@
 }
 
 .game-card:hover {
+    background-color: rgba(2, 20, 61, 0.534);
+}
+
+.game-card::after {
+    background-color: rgb(2, 20, 61);
+}
+
+.hovered {
     background-color: #3e4450;
 }
 
@@ -70,4 +78,8 @@
 .game-infos-value {
     width: 55%;
     text-align: right;
+}
+
+.active {
+    background-color: rgb(2, 20, 61);
 }
