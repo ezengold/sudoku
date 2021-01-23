@@ -1,7 +1,7 @@
 {
-  "name": "projet2",
+  "name": "Sudoku",
   "version": "1.0.0",
-  "description": "first windows project",
+  "description": "Sudoku game",
   "main": "index.js",
   "scripts": {
     "start": "electron-forge start",

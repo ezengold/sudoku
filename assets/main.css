@@ -1,0 +1,73 @@
+.game-space {
+    width: 60%;
+    height: calc(100vh - 56px);
+    background-color: #272b33;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1%;
+}
+
+.bg-principal {
+    background-color: #181a1f;
+}
+
+.bg-second {
+    background-image: linear-gradient(to right, #3e4450, #272b33);
+}
+
+.game-card-line {
+    width: 100%;
+    height: 33.33%;
+    display: flex;
+    flex-direction: row;
+}
+
+.game-card {
+    width: 33.33%;
+    height: 100%;
+    border: 1px solid white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 90px;
+    cursor: pointer;
+}
+
+.game-card:hover {
+    background-color: #3e4450;
+}
+
+.game-infos {
+    background-image: linear-gradient(to top, #272b33, #3e4450);
+    height:  calc(100vh - 56px);
+    width: 40%; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    padding: 3%;
+    color: white;
+}
+
+.game-infos-line {
+    width: 100%;
+    padding: 3%;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.game-infos-key {
+    width: 45%;
+    text-align: left;
+}
+
+.game-infos-value {
+    width: 55%;
+    text-align: right;
+}
