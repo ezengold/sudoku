@@ -1,85 +1,48 @@
-// FUNCTIONS
-const setCardActive = () => {
-	cards[activeFocus].classList.add('active');
-}
+import DATABASE, { tokens } from "./data.js";
+import { getTime, getRandom } from './utils.js';
 
-const removeActive = () => {
-	cards[activeFocus].classList.remove('active');
-}
-
-const getValue = keyCode => {
-	return tokens.find(el => el[keyCode])[keyCode];
-}
-
-const addCoups = () => {
-	COUPS++;
-	document.getElementById('coups').innerText = COUPS;
-}
-
-const getTime = (date1, date2) => {
-	let distance = Math.abs(date1 - date2);
-	const hours = Math.floor(distance / 3600000);
-	distance -= hours * 3600000;
-	const minutes = Math.floor(distance / 60000);
-	distance -= minutes * 60000;
-	const seconds = Math.floor(distance / 1000);
-	return `${hours}:${('0' + minutes).slice(-2)}:${('0' + seconds).slice(-2)}`;
-}
-
-const shuffle = (array) => {
-	let currentIndex = array.length, temporaryValue, randomIndex;
-	while (0 !== currentIndex) {
-		randomIndex = Math.floor(Math.random() * currentIndex);
-		currentIndex -= 1;
-		temporaryValue = array[currentIndex];
-		array[currentIndex] = array[randomIndex];
-		array[randomIndex] = temporaryValue;
-	}
-	return array;
-}
-
-const getRandomGame = () => {
-	let answer = shuffle([1, 2, 3, 4, 5, 6, 7, 8, 9]);
-	let game = [];
-	let showedIndexes = (shuffle([0, 1, 2, 3, 4, 5, 6, 7, 8])).slice(0, 4);
-
-	for (let i = 0; i < answer.length; i++) {
-		const ans = answer[i];
-
-		if (showedIndexes.includes(ans)) {
-			game[i] = ans;
-		} else {
-			game[i] = null;
-		}
-	}
-
-	return  {
-		game,
-		answer
-	};
-}
-// END FUNCTIONS
-
-
-const GAME = getRandomGame();
-const LEN = 3;
+const LEN = 9;
 const cards = [];
+let playingCards = [];
 const startTime = new Date();
 let currentTime = new Date();
 let COUPS = 0;
 let activeFocus = 0;
 
-const tokens = [
-	{ 49: 1 }, { 97: 1 },
-	{ 50: 2 }, { 98: 2 },
-	{ 51: 3 }, { 99: 3 },
-	{ 52: 4 }, { 100: 4 },
-	{ 53: 5 }, { 101: 5 },
-	{ 54: 6 }, { 102: 6 },
-	{ 55: 7 }, { 103: 7 },
-	{ 56: 8 }, { 104: 8 },
-	{ 57: 9 }, { 105: 9 },
-];
+// FUNCTIONS
+const setCardActive = () => {
+	document.querySelectorAll('.game-card')[activeFocus].classList.add('active');
+};
+
+const removeActive = () => {
+	document.querySelectorAll('.game-card')[activeFocus].classList.remove('active');
+};
+
+const getValue = keyCode => {
+	return tokens.find(el => el[keyCode])[keyCode];
+};
+
+const addCoups = () => {
+	COUPS++;
+	document.getElementById('coups').innerText = COUPS;
+};
+
+const getRandomGame = () => {
+	return DATABASE[getRandom(0, DATABASE.length - 1)];
+};
+
+const checkMovement = () => {
+	// document.querySelectorAll('.game-card').forEach((card, key) => {
+		// CHECK ON COLUMN
+		// console.log(activeFocus%(LEN-1));
+		// if ((key )%(LEN-1) === activeFocus%(LEN-1)) {
+		// 	card.classList.add('unauthorized');
+		// }
+	// });
+}
+// END FUNCTIONS
+
+const GAME = getRandomGame();
 
 document.getElementById('coups').innerText = COUPS;
 document.querySelectorAll('.game-card').forEach((card, key) => {
@@ -97,8 +60,10 @@ document.querySelectorAll('.game-card').forEach((card, key) => {
 });
 
 cards[activeFocus].classList.add('active');
+playingCards = cards;
 
 document.addEventListener('keyup', e => {
+	let card;
 	// MOVE MANAGING
 	if (e.keyCode === 37) {
 		// LEFT
@@ -141,14 +106,37 @@ document.addEventListener('keyup', e => {
 		// NUMBER MANAGING 
 	} else if ((e.keyCode >= 97 && e.keyCode <= 105) || e.keyCode >= 49 && e.keyCode <= 57) {
 		card = cards[activeFocus];
-		if (getValue(e.keyCode) !== parseInt(card.innerText)) {
-			addCoups();
-			card.innerText = getValue(e.keyCode);
+		if (GAME.game[activeFocus] === null) {
+			if (getValue(e.keyCode) !== parseInt(card.innerText)) {
+				addCoups();
+				card.innerText = getValue(e.keyCode);
+				playingCards[activeFocus] = getValue(parseInt(e.keyCode));
+			}
+		} else {
+			card.classList.add('unauthorized');
+			setTimeout(() => {
+				card.classList.remove('unauthorized');
+			}, 200);
 		}
+		// checkMovement();
 	} else if (e.keyCode === 8) {
 		card = cards[activeFocus];
-		addCoups();
-		card.innerText = '';
+		if (GAME.game[activeFocus] === null) {
+			addCoups();
+			card.innerText = '';
+			playingCards[activeFocus] = null;
+		} else {
+			card.classList.add('unauthorized');
+			setTimeout(() => {
+				card.classList.remove('unauthorized');
+			}, 200);
+		}
+	} else {
+		card = cards[activeFocus];
+		card.classList.add('unauthorized');
+		setTimeout(() => {
+			card.classList.remove('unauthorized');
+		}, 200);
 	}
 });
 

@@ -3,6 +3,7 @@ const path = require('path');
 const url = require('url');
 
 // SET ENV
+// process.env.NODE_ENV = 'production';
 process.env.NODE_ENV = 'development';
 
 const { app, BrowserWindow, Menu, ipcMain } = electron;
@@ -15,7 +16,8 @@ app.on('ready', function () {
 	mainWindow = new BrowserWindow({
 		height: 700,
 		width: 1100,
-		resizable: false,
+		minWidth: 1100,
+		minHeight: 700,
 		// webPreferences: {
 		// 	nodeIntegration: true
 		// }
