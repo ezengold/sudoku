@@ -35,6 +35,7 @@
     color: white;
     font-size: 40px;
     cursor: pointer;
+    animation: zoomIn 1s;
 }
 
 .border-top-white {
@@ -91,6 +92,28 @@
 .game-infos-value {
     width: 55%;
     text-align: right;
+}
+
+.game-image {
+    margin-top: 15%;
+    height: 60%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10%;
+}
+
+.sudoku-image {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    animation: tada 2s normal 1s, slideInDown 1s normal 0s;
+}
+
+.sudoku-image:hover {
+    transform: rotate(10deg);
+    transition-duration: 0.2s;
 }
 
 .active {
