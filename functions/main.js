@@ -101,41 +101,39 @@ document.addEventListener('keyup', e => {
 			activeFocus += LEN;
 		}
 		setCardActive();
-		// END MOVE MANAGING
+	// END MOVE MANAGING
 
-		// NUMBER MANAGING 
+	// NUMBER MANAGING 
 	} else if ((e.keyCode >= 97 && e.keyCode <= 105) || e.keyCode >= 49 && e.keyCode <= 57) {
-		card = cards[activeFocus];
 		if (GAME.game[activeFocus] === null) {
-			if (getValue(e.keyCode) !== parseInt(card.innerText)) {
+			console.log(cards[activeFocus]);
+			if (getValue(e.keyCode) !== parseInt(cards[activeFocus].innerText)) {
 				addCoups();
-				card.innerText = getValue(e.keyCode);
+				cards[activeFocus].innerText = getValue(e.keyCode);
 				playingCards[activeFocus] = getValue(parseInt(e.keyCode));
 			}
 		} else {
-			card.classList.add('unauthorized');
+			cards[activeFocus].classList.add('unauthorized');
 			setTimeout(() => {
-				card.classList.remove('unauthorized');
+				cards[activeFocus].classList.remove('unauthorized');
 			}, 200);
 		}
 		// checkMovement();
 	} else if (e.keyCode === 8) {
-		card = cards[activeFocus];
 		if (GAME.game[activeFocus] === null) {
 			addCoups();
-			card.innerText = '';
+			cards[activeFocus].innerText = '';
 			playingCards[activeFocus] = null;
 		} else {
-			card.classList.add('unauthorized');
+			cards[activeFocus].classList.add('unauthorized');
 			setTimeout(() => {
-				card.classList.remove('unauthorized');
+				cards[activeFocus].classList.remove('unauthorized');
 			}, 200);
 		}
 	} else {
-		card = cards[activeFocus];
-		card.classList.add('unauthorized');
+		cards[activeFocus].classList.add('unauthorized');
 		setTimeout(() => {
-			card.classList.remove('unauthorized');
+			cards[activeFocus].classList.remove('unauthorized');
 		}, 200);
 	}
 });
