@@ -33,17 +33,16 @@ const getRandomGame = () => {
 
 const checkOnColums = () => {
 	// CHECK ON COLUMN
+	let wrongs = [];
 	document.querySelectorAll('.game-card').forEach((card, key) => {
 		if (!!card.innerText) {
 			let done = false;
 			document.querySelectorAll('.game-card').forEach((c, k) => {
 				if (!!c.innerText) {
-					if (key % LEN === k % LEN && key !== k && !done) {
+					if (key % LEN === k % LEN && key !== k && !done && playingCards[k] !== null) {
 						if (card.innerText === c.innerText && !done) {
 							done = true;
-							if (!card.classList.contains('unauthorized')) {
-								card.classList.add('unauthorized');
-							}
+							wrongs.push(key);
 						} else {
 							if (card.classList.contains('unauthorized')) {
 								card.classList.remove('unauthorized');
@@ -62,28 +61,68 @@ const checkOnColums = () => {
 			});
 		}
 	});
+
+	return wrongs;
 };
 
 const checkOnLines = () => {
-	// CHECK ON COLUMN
+	// CHECK ON LINES
+	let wrongs = [];
 	document.querySelectorAll('.game-card').forEach((card, key) => {
-		if ((Math.floor(key / LEN) * (LEN - 1)) && key !== activeFocus) {
-			if (card.innerText === playingCards[activeFocus].innerText) {
-				if (!card.classList.contains('unauthorized')) {
-					card.classList.add('unauthorized');
+		if (!!card.innerText) {
+			let done = false;
+			const line = Math.floor(key / LEN);
+			document.querySelectorAll('.game-card').forEach((c, k) => {
+				if (!!c.innerText) {
+					if (k >= (line * LEN) && k <= (line * LEN + (LEN - 1)) && key !== k && !done) {
+						if (card.innerText === c.innerText && !done && playingCards[k] !== null) {
+							done = true;
+							wrongs.push(key);
+						} else {
+							if (card.classList.contains('unauthorized')) {
+								card.classList.remove('unauthorized');
+							}
+						}
+					}
 				}
-			} else {
-				if (card.classList.contains('unauthorized')) {
-					card.classList.remove('unauthorized');
+			});
+		} else {
+			document.querySelectorAll('.game-card').forEach((c, k) => {
+				if (key % LEN === k % LEN && key !== k) {
+					if (card.classList.contains('unauthorized')) {
+						card.classList.remove('unauthorized');
+					}
 				}
-			}
+			});
 		}
 	});
+
+	return wrongs;
 };
 
+const shrinkArray = (array) => {
+	let out = [];
+	for (let i = 0; i < array.length; i++) {
+		const el = array[i];
+		
+		if (out.findIndex(e => e === el) === -1) {
+			out = out.concat(el);
+		}
+	}
+	return out;
+}
+
 const checkMovement = () => {
-	checkOnColums();
-	// checkOnLines();
+	let wrongsOnColums = checkOnColums();
+	let wrongOnLines = checkOnLines();
+
+	let wrongsTiles = shrinkArray([...wrongsOnColums, ...wrongOnLines]);
+
+	wrongsTiles.forEach(tile => {
+		if (!playingCards[tile].classList.contains('unauthorized')) {
+			playingCards[tile].classList.add('unauthorized');
+		}
+	});
 };
 // END FUNCTIONS
 
@@ -94,6 +133,8 @@ document.querySelectorAll('.game-card').forEach((card, key) => {
 	card.innerText = GAME.game[key];
 	if (GAME.game[key] != null) {
 		card.classList.add('hovered');
+	} else {
+		card.classList.add('text-yellow');
 	}
 	cards.push(card);
 

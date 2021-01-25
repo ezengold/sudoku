@@ -123,3 +123,7 @@
 .unauthorized {
     background-color: rgb(247, 64, 64);
 }
+
+.text-yellow {
+    color: rgb(255, 255, 101);
+}
