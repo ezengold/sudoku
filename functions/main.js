@@ -35,12 +35,12 @@ const checkOnColums = () => {
 	// CHECK ON COLUMN
 	document.querySelectorAll('.game-card').forEach((card, key) => {
 		if (!!card.innerText) {
-			// console.log('key = ', key, ' innerText = ', card.innerText);
+			let done = false;
 			document.querySelectorAll('.game-card').forEach((c, k) => {
 				if (!!c.innerText) {
-					if (key % LEN === k % LEN && key !== k) {
-						if (card.innerText === c.innerText) {
-							console.log('key[',key,'] = ', card.innerText,' k[', k, '] = ', c.innerText);
+					if (key % LEN === k % LEN && key !== k && !done) {
+						if (card.innerText === c.innerText && !done) {
+							done = true;
 							if (!card.classList.contains('unauthorized')) {
 								card.classList.add('unauthorized');
 							}
@@ -150,7 +150,6 @@ document.addEventListener('keyup', e => {
 	// NUMBER MANAGING 
 	} else if ((e.keyCode >= 97 && e.keyCode <= 105) || e.keyCode >= 49 && e.keyCode <= 57) {
 		if (GAME.game[activeFocus] === null) {
-			console.log(playingCards[activeFocus]);
 			if (getValue(e.keyCode) !== parseInt(playingCards[activeFocus].innerText)) {
 				addCoups();
 				playingCards[activeFocus].innerText = getValue(e.keyCode);
