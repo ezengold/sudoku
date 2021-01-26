@@ -3,8 +3,8 @@ const path = require('path');
 const url = require('url');
 
 // SET ENV
-process.env.NODE_ENV = 'production';
-// process.env.NODE_ENV = 'development';
+// process.env.NODE_ENV = 'production';
+process.env.NODE_ENV = 'development';
 
 const { app, BrowserWindow, Menu, ipcMain } = electron;
 

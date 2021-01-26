@@ -1,4 +1,4 @@
-import DATABASE, { tokens } from "./data.js";
+import DATABASE, { tokens, zones } from "./data.js";
 import { getTime, getRandom } from './utils.js';
 
 const LEN = 9;
@@ -100,6 +100,38 @@ const checkOnLines = () => {
 	return wrongs;
 };
 
+const checkInRange = () => {
+	// CHECK IN RANGE
+	let wrongs = [];
+	document.querySelectorAll('.game-card').forEach((card, key) => {
+		if (!!card.innerText) {
+			let done = false;
+			let fellowsIndex = zones.find(range => range.findIndex(el => el === key) !== -1);
+			const fellows = playingCards.filter((element, index) => fellowsIndex.findIndex(fellow => fellow === index) !== -1);
+
+			fellows.forEach((c, k) => {
+				if (card.innerText === c.innerText && key !== k && playingCards[k] !== null) {
+					wrongs.push(key);
+				} else {
+					if (card.classList.contains('unauthorized')) {
+						card.classList.remove('unauthorized');
+					}
+				}
+			});
+		} else {
+			document.querySelectorAll('.game-card').forEach((c, k) => {
+				if (key % LEN === k % LEN && key !== k) {
+					if (card.classList.contains('unauthorized')) {
+						card.classList.remove('unauthorized');
+					}
+				}
+			});
+		}
+	});
+
+	return wrongs;
+};
+
 const shrinkArray = (array) => {
 	let out = [];
 	for (let i = 0; i < array.length; i++) {
@@ -115,6 +147,7 @@ const shrinkArray = (array) => {
 const checkMovement = () => {
 	let wrongsOnColums = checkOnColums();
 	let wrongOnLines = checkOnLines();
+	let wrongInRange = checkInRange();
 
 	let wrongsTiles = shrinkArray([...wrongsOnColums, ...wrongOnLines]);
 
