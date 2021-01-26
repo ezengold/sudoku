@@ -16,8 +16,7 @@ app.on('ready', function () {
 	mainWindow = new BrowserWindow({
 		height: 700,
 		width: 1100,
-		minWidth: 1100,
-		minHeight: 700,
+		resizable: false,
 		// webPreferences: {
 		// 	nodeIntegration: true
 		// }

@@ -31,6 +31,15 @@ const getRandomGame = () => {
 	return DATABASE[getRandom(0, DATABASE.length - 1)];
 };
 
+const isAllCardsFilled = () => {
+	for (let i = 0; i < document.querySelectorAll('.game-card').length; i++) {
+		const card = document.querySelectorAll('.game-card')[i];
+		if (!!!card.innerText)
+			return false;
+	}
+	return true;
+};
+
 const checkOnColums = () => {
 	// CHECK ON COLUMN
 	let wrongs = [];
@@ -105,25 +114,12 @@ const checkInRange = () => {
 	let wrongs = [];
 	document.querySelectorAll('.game-card').forEach((card, key) => {
 		if (!!card.innerText) {
-			let done = false;
 			let fellowsIndex = zones.find(range => range.findIndex(el => el === key) !== -1);
-			const fellows = playingCards.filter((element, index) => fellowsIndex.findIndex(fellow => fellow === index) !== -1);
-
-			fellows.forEach((c, k) => {
-				if (card.innerText === c.innerText && key !== k && playingCards[k] !== null) {
+			// console.log('key = ', key, 'fellows = ', fellowsIndex);
+			playingCards.forEach((c, k) => {
+				if (!!c.innerText && fellowsIndex.findIndex(fellow => fellow === k) !== -1 && card.innerText === c.innerText && key !== k) {
+					// console.log('card[', key, '] = ', card.innerText, ', c[', k, '] = ', c.innerText, ',', card.innerText === c.innerText);
 					wrongs.push(key);
-				} else {
-					if (card.classList.contains('unauthorized')) {
-						card.classList.remove('unauthorized');
-					}
-				}
-			});
-		} else {
-			document.querySelectorAll('.game-card').forEach((c, k) => {
-				if (key % LEN === k % LEN && key !== k) {
-					if (card.classList.contains('unauthorized')) {
-						card.classList.remove('unauthorized');
-					}
 				}
 			});
 		}
@@ -149,13 +145,19 @@ const checkMovement = () => {
 	let wrongOnLines = checkOnLines();
 	let wrongInRange = checkInRange();
 
-	let wrongsTiles = shrinkArray([...wrongsOnColums, ...wrongOnLines]);
+	let wrongsTiles = shrinkArray([...wrongsOnColums, ...wrongOnLines, ...wrongInRange]);
 
 	wrongsTiles.forEach(tile => {
 		if (!playingCards[tile].classList.contains('unauthorized')) {
 			playingCards[tile].classList.add('unauthorized');
 		}
 	});
+
+	if (wrongsTiles.length === 0) {
+		if (isAllCardsFilled()) {
+			//TRIGGER END OF GAME
+		}
+	}
 };
 // END FUNCTIONS
 
