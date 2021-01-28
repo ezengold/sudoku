@@ -50,6 +50,17 @@ const mainMenuTemplate = [
 				click() {
 					app.quit();
 				}
+			},
+			{
+				label: 'Nouvelle Partie',
+				accelerator: process.platform == 'darwin' ? 'Command+N' : 'Ctrl+N',
+				click() {
+					mainWindow.loadURL(url.format({
+						pathname: path.join(__dirname, '/views/game.html'),
+						protocol: 'file:',
+						slashes: true,
+					}));
+				}
 			}
 		]
 	}

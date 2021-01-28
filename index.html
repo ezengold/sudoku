@@ -10,147 +10,20 @@
 </head>
 
 <body>
-	<nav class="navbar navbar-light bg-principal">
-		<span class="navbar-brand text-white font-weight-bold">Sudoku</span>
-		<div class="row col-10 align-items-center justify-content-end p-0">
-			<button class="col-2 btn btn-dark border-0 bg-second h-100 mr-3">
-				<span class="font-70">Jouer</span>
-				<i class="fa fa-play-circle ml-2"></i>
-			</button>
-			<button class="col-2 btn btn-dark border-0 bg-second h-100 mr-3">
-				<span class="font-70">Pause</span>
-				<i class="fa fa-pause-circle ml-3" style="font-size: large;"></i>
-			</button>
-			<button class="col-2 btn btn-dark border-0 bg-second h-100 mr-3">
-				<span class="font-70">Records</span>
-				<i class="fa fa-chart-line ml-3" style="font-size: large;"></i>
-			</button>
-		</div>
-	</nav>
-
-	<div class="d-flex align-items-center justify-content-between">
-		<div class="game-space">
-			<div class="game-card-line">
-				<div class="game-card border-right-0 border-bottom-0 border-top-white border-left-white"></div>
-				<div class="game-card border-right-0 border-bottom-0 border-top-white"></div>
-				<div class="game-card border-bottom-0 border-top-white border-right-white"></div>
-				<div class="game-card border-right-0 border-bottom-0 border-top-white"></div>
-				<div class="game-card border-right-0 border-bottom-0 border-top-white"></div>
-				<div class="game-card border-right-white border-bottom-0 border-top-white"></div>
-				<div class="game-card border-right-0 border-bottom-0 border-top-white"></div>
-				<div class="game-card border-right-0 border-bottom-0 border-top-white"></div>
-				<div class="game-card border-bottom-0 border-top-white border-right-white"></div>
-			</div>
-			<div class="game-card-line">
-				<div class="game-card border-right-0 border-bottom-0 border-left-white"></div>
-				<div class="game-card border-right-0 border-bottom-0"></div>
-				<div class="game-card border-right-white border-bottom-0"></div>
-				<div class="game-card border-right-0 border-bottom-0"></div>
-				<div class="game-card border-right-0 border-bottom-0"></div>
-				<div class="game-card border-right-white border-bottom-0"></div>
-				<div class="game-card border-right-0 border-bottom-0"></div>
-				<div class="game-card border-right-0 border-bottom-0"></div>
-				<div class="game-card border-bottom-0 border-right-white"></div>
-			</div>
-			<div class="game-card-line">
-				<div class="game-card border-right-0 border-bottom-white border-left-white"></div>
-				<div class="game-card border-right-0 border-bottom-white"></div>
-				<div class="game-card border-right-white border-bottom-white"></div>
-				<div class="game-card border-right-0 border-bottom-white"></div>
-				<div class="game-card border-right-0 border-bottom-white"></div>
-				<div class="game-card border-right-white border-bottom-white"></div>
-				<div class="game-card border-right-0 border-bottom-white"></div>
-				<div class="game-card border-right-0 border-bottom-white"></div>
-				<div class="game-card border-bottom-white border-right-white"></div>
-			</div>
-			<div class="game-card-line">
-				<div class="game-card border-right-0 border-bottom-0 border-left-white"></div>
-				<div class="game-card border-right-0 border-bottom-0"></div>
-				<div class="game-card border-right-white border-bottom-0"></div>
-				<div class="game-card border-right-0 border-bottom-0"></div>
-				<div class="game-card border-right-0 border-bottom-0"></div>
-				<div class="game-card border-right-white border-bottom-0"></div>
-				<div class="game-card border-right-0 border-bottom-0"></div>
-				<div class="game-card border-right-0 border-bottom-0"></div>
-				<div class="game-card border-bottom-0 border-right-white"></div>
-			</div>
-			<div class="game-card-line">
-				<div class="game-card border-right-0 border-bottom-0 border-left-white"></div>
-				<div class="game-card border-right-0 border-bottom-0"></div>
-				<div class="game-card border-right-white border-bottom-0"></div>
-				<div class="game-card border-right-0 border-bottom-0"></div>
-				<div class="game-card border-right-0 border-bottom-0"></div>
-				<div class="game-card border-right-white border-bottom-0"></div>
-				<div class="game-card border-right-0 border-bottom-0"></div>
-				<div class="game-card border-right-0 border-bottom-0"></div>
-				<div class="game-card border-bottom-0 border-right-white"></div>
-			</div>
-			<div class="game-card-line">
-				<div class="game-card border-right-0 border-bottom-white border-left-white"></div>
-				<div class="game-card border-right-0 border-bottom-white"></div>
-				<div class="game-card border-right-white border-bottom-white"></div>
-				<div class="game-card border-right-0 border-bottom-white"></div>
-				<div class="game-card border-right-0 border-bottom-white"></div>
-				<div class="game-card border-right-white border-bottom-white"></div>
-				<div class="game-card border-right-0 border-bottom-white"></div>
-				<div class="game-card border-right-0 border-bottom-white"></div>
-				<div class="game-card border-bottom-white border-right-white"></div>
-			</div>
-			<div class="game-card-line">
-				<div class="game-card border-right-0 border-bottom-0 border-left-white"></div>
-				<div class="game-card border-right-0 border-bottom-0"></div>
-				<div class="game-card border-right-white border-bottom-0"></div>
-				<div class="game-card border-right-0 border-bottom-0"></div>
-				<div class="game-card border-right-0 border-bottom-0"></div>
-				<div class="game-card border-right-white border-bottom-0"></div>
-				<div class="game-card border-right-0 border-bottom-0"></div>
-				<div class="game-card border-right-0 border-bottom-0"></div>
-				<div class="game-card border-bottom-0 border-right-white"></div>
-			</div>
-			<div class="game-card-line">
-				<div class="game-card border-right-0 border-bottom-0 border-left-white"></div>
-				<div class="game-card border-right-0 border-bottom-0"></div>
-				<div class="game-card border-right-white border-bottom-0"></div>
-				<div class="game-card border-right-0 border-bottom-0"></div>
-				<div class="game-card border-right-0 border-bottom-0"></div>
-				<div class="game-card border-right-white border-bottom-0"></div>
-				<div class="game-card border-right-0 border-bottom-0"></div>
-				<div class="game-card border-right-0 border-bottom-0"></div>
-				<div class="game-card border-bottom-0 border-right-white"></div>
-			</div>
-			<div class="game-card-line">
-				<div class="game-card border-right-0 border-bottom-white border-left-white"></div>
-				<div class="game-card border-right-0 border-bottom-white"></div>
-				<div class="game-card border-right-white border-bottom-white"></div>
-				<div class="game-card border-right-0 border-bottom-white"></div>
-				<div class="game-card border-right-0 border-bottom-white"></div>
-				<div class="game-card border-right-white border-bottom-white"></div>
-				<div class="game-card border-right-0 border-bottom-white"></div>
-				<div class="game-card border-right-0 border-bottom-white"></div>
-				<div class="game-card border-bottom-white border-right-white"></div>
-			</div>
-		</div>
-
-		<div class="game-infos">
-			<div class="game-infos-line">
-				<span class="game-infos-key">Nom du joueur : </span><span class="game-infos-value" id="player">EZEN</span>
-			</div>
-			<div class="game-infos-line">
-				<span class="game-infos-key">Coups joués : </span><span class="game-infos-value" id="coups">0</span>
-			</div>
-			<div class="game-infos-line">
-				<span class="game-infos-key">Durée : </span><span class="game-infos-value" id="time">0:00:00</span>
-			</div>
-			<div class="game-image">
-				<img class="sudoku-image" src="./assets/images/IMG_7349.PNG" alt="sudoku">
-			</div>
-		</div>
+	<div class="content-splash d-flex align-items-center justify-content-center bg-principal" style="min-height: 100vh;">
+		<img class="splash-anim" src="./assets/images/IMG_7349.PNG" alt="sudoku">
 	</div>
 
 	<script src="./assets/bootstrap-4.5.3/js/jquery-3.2.1.slim.min.js"></script>
 	<script src="./assets/bootstrap-4.5.3/js/bootstrap.min.js"></script>
-	<script type="module" src="./functions/main.js"></script>
-	<!-- <script src="./functions/test.js"></script> -->
+
+	<script>
+		$(document).ready(() => {
+			setTimeout(() => {
+				location.href = './views/accueil.html';
+			}, 3000);
+		});
+	</script>
 </body>
 
 </html>

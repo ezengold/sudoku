@@ -1,6 +1,6 @@
 .game-space {
     width: 60%;
-    height: calc(100vh - 56px);
+    height: calc(100vh - 52px);
     background-color: #272b33;
     display: flex;
     flex-direction: column;
@@ -64,7 +64,7 @@
 
 .game-infos {
     background-image: linear-gradient(to top, #272b33, #3e4450);
-    height:  calc(100vh - 56px);
+    height:  calc(100vh - 52px);
     width: 40%; 
     display: flex;
     flex-direction: column;
@@ -110,11 +110,6 @@
     animation: tada 2s normal 1s, slideInDown 1s normal 0s;
 }
 
-.sudoku-image:hover {
-    transform: rotate(10deg);
-    transition-duration: 0.2s;
-}
-
 .active {
     background-color: rgb(2, 20, 61);
 }
@@ -125,4 +120,22 @@
 
 .text-yellow {
     color: rgb(255, 255, 101);
+}
+
+.title-anim {
+    animation: bounceInLeft 1s normal 0s;
+}
+
+.welcome-image-anim {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    animation: tada 2s normal 1s, slideInDown 1s normal 0s;
+}
+
+.splash-anim {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    animation: flipInX 1.5s normal 0s;
 }

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Sudoku</title>
+	<link rel="stylesheet" href="../assets/bootstrap-4.5.3/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../assets/fa-5.15/css/all.css">
+	<link rel="stylesheet" href="../assets/animate.min.css">
+	<link rel="stylesheet" href="../assets/main.css">
+</head>
+
+<body>
+	<nav class="navbar navbar-light bg-principal">
+        <div class="align-items-center justify-content-start p-0">
+			<button class="btn btn-dark border-0 bg-second rounded-circle" onclick="location.href = './accueil.html'">
+				<i class="fa fa-arrow-left"></i>
+			</button>
+		</div>
+		<div class="align-items-center justify-content-end p-0">
+			<button class="btn btn-dark border-0 bg-second rounded-circle">
+				<i class="fa fa-play"></i>
+			</button>
+			<button class="btn btn-dark border-0 bg-second rounded-circle">
+				<i class="fa fa-pause"></i>
+			</button>
+		</div>
+	</nav>
+
+	<div class="d-flex align-items-center justify-content-between">
+		<div class="game-space">
+			<div class="game-card-line">
+				<div class="game-card border-right-0 border-bottom-0 border-top-white border-left-white"></div>
+				<div class="game-card border-right-0 border-bottom-0 border-top-white"></div>
+				<div class="game-card border-bottom-0 border-top-white border-right-white"></div>
+				<div class="game-card border-right-0 border-bottom-0 border-top-white"></div>
+				<div class="game-card border-right-0 border-bottom-0 border-top-white"></div>
+				<div class="game-card border-right-white border-bottom-0 border-top-white"></div>
+				<div class="game-card border-right-0 border-bottom-0 border-top-white"></div>
+				<div class="game-card border-right-0 border-bottom-0 border-top-white"></div>
+				<div class="game-card border-bottom-0 border-top-white border-right-white"></div>
+			</div>
+			<div class="game-card-line">
+				<div class="game-card border-right-0 border-bottom-0 border-left-white"></div>
+				<div class="game-card border-right-0 border-bottom-0"></div>
+				<div class="game-card border-right-white border-bottom-0"></div>
+				<div class="game-card border-right-0 border-bottom-0"></div>
+				<div class="game-card border-right-0 border-bottom-0"></div>
+				<div class="game-card border-right-white border-bottom-0"></div>
+				<div class="game-card border-right-0 border-bottom-0"></div>
+				<div class="game-card border-right-0 border-bottom-0"></div>
+				<div class="game-card border-bottom-0 border-right-white"></div>
+			</div>
+			<div class="game-card-line">
+				<div class="game-card border-right-0 border-bottom-white border-left-white"></div>
+				<div class="game-card border-right-0 border-bottom-white"></div>
+				<div class="game-card border-right-white border-bottom-white"></div>
+				<div class="game-card border-right-0 border-bottom-white"></div>
+				<div class="game-card border-right-0 border-bottom-white"></div>
+				<div class="game-card border-right-white border-bottom-white"></div>
+				<div class="game-card border-right-0 border-bottom-white"></div>
+				<div class="game-card border-right-0 border-bottom-white"></div>
+				<div class="game-card border-bottom-white border-right-white"></div>
+			</div>
+			<div class="game-card-line">
+				<div class="game-card border-right-0 border-bottom-0 border-left-white"></div>
+				<div class="game-card border-right-0 border-bottom-0"></div>
+				<div class="game-card border-right-white border-bottom-0"></div>
+				<div class="game-card border-right-0 border-bottom-0"></div>
+				<div class="game-card border-right-0 border-bottom-0"></div>
+				<div class="game-card border-right-white border-bottom-0"></div>
+				<div class="game-card border-right-0 border-bottom-0"></div>
+				<div class="game-card border-right-0 border-bottom-0"></div>
+				<div class="game-card border-bottom-0 border-right-white"></div>
+			</div>
+			<div class="game-card-line">
+				<div class="game-card border-right-0 border-bottom-0 border-left-white"></div>
+				<div class="game-card border-right-0 border-bottom-0"></div>
+				<div class="game-card border-right-white border-bottom-0"></div>
+				<div class="game-card border-right-0 border-bottom-0"></div>
+				<div class="game-card border-right-0 border-bottom-0"></div>
+				<div class="game-card border-right-white border-bottom-0"></div>
+				<div class="game-card border-right-0 border-bottom-0"></div>
+				<div class="game-card border-right-0 border-bottom-0"></div>
+				<div class="game-card border-bottom-0 border-right-white"></div>
+			</div>
+			<div class="game-card-line">
+				<div class="game-card border-right-0 border-bottom-white border-left-white"></div>
+				<div class="game-card border-right-0 border-bottom-white"></div>
+				<div class="game-card border-right-white border-bottom-white"></div>
+				<div class="game-card border-right-0 border-bottom-white"></div>
+				<div class="game-card border-right-0 border-bottom-white"></div>
+				<div class="game-card border-right-white border-bottom-white"></div>
+				<div class="game-card border-right-0 border-bottom-white"></div>
+				<div class="game-card border-right-0 border-bottom-white"></div>
+				<div class="game-card border-bottom-white border-right-white"></div>
+			</div>
+			<div class="game-card-line">
+				<div class="game-card border-right-0 border-bottom-0 border-left-white"></div>
+				<div class="game-card border-right-0 border-bottom-0"></div>
+				<div class="game-card border-right-white border-bottom-0"></div>
+				<div class="game-card border-right-0 border-bottom-0"></div>
+				<div class="game-card border-right-0 border-bottom-0"></div>
+				<div class="game-card border-right-white border-bottom-0"></div>
+				<div class="game-card border-right-0 border-bottom-0"></div>
+				<div class="game-card border-right-0 border-bottom-0"></div>
+				<div class="game-card border-bottom-0 border-right-white"></div>
+			</div>
+			<div class="game-card-line">
+				<div class="game-card border-right-0 border-bottom-0 border-left-white"></div>
+				<div class="game-card border-right-0 border-bottom-0"></div>
+				<div class="game-card border-right-white border-bottom-0"></div>
+				<div class="game-card border-right-0 border-bottom-0"></div>
+				<div class="game-card border-right-0 border-bottom-0"></div>
+				<div class="game-card border-right-white border-bottom-0"></div>
+				<div class="game-card border-right-0 border-bottom-0"></div>
+				<div class="game-card border-right-0 border-bottom-0"></div>
+				<div class="game-card border-bottom-0 border-right-white"></div>
+			</div>
+			<div class="game-card-line">
+				<div class="game-card border-right-0 border-bottom-white border-left-white"></div>
+				<div class="game-card border-right-0 border-bottom-white"></div>
+				<div class="game-card border-right-white border-bottom-white"></div>
+				<div class="game-card border-right-0 border-bottom-white"></div>
+				<div class="game-card border-right-0 border-bottom-white"></div>
+				<div class="game-card border-right-white border-bottom-white"></div>
+				<div class="game-card border-right-0 border-bottom-white"></div>
+				<div class="game-card border-right-0 border-bottom-white"></div>
+				<div class="game-card border-bottom-white border-right-white"></div>
+			</div>
+		</div>
+
+		<div class="game-infos">
+			<div class="game-infos-line">
+				<span class="game-infos-key">Nom du joueur : </span><span class="game-infos-value" id="player">EZEN</span>
+			</div>
+			<div class="game-infos-line">
+				<span class="game-infos-key">Coups joués : </span><span class="game-infos-value" id="coups">0</span>
+			</div>
+			<div class="game-infos-line">
+				<span class="game-infos-key">Durée : </span><span class="game-infos-value" id="time">0:00:00</span>
+			</div>
+			<div class="game-image">
+				<img class="sudoku-image" src="../assets/images/IMG_7349.PNG" alt="sudoku">
+			</div>
+		</div>
+	</div>
+
+	<script src="../assets/bootstrap-4.5.3/js/jquery-3.2.1.slim.min.js"></script>
+	<script src="../assets/bootstrap-4.5.3/js/bootstrap.min.js"></script>
+	<script type="module" src="../functions/main.js"></script>
+	<!-- <script src="./functions/test.js"></script> -->
+</body>
+
+</html>
