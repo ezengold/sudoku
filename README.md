@@ -1,6 +1,6 @@
-# Electron ShoppingList Desktop App
+# Electron Sudoku Desktop App
 
-This is a cross platform shoppinglist desktop application built on electron
+This is a cross platform Sudoku desktop application built on electron
 
 ### Version
 1.0.0
@@ -14,12 +14,20 @@ Install the dependencies
 ```sh
 $ npm install
 ```
+or
+```sh
+$ yarn install
+```
 
 ### Serve
-To run electron
+To run
 
 ```sh
 $ npm start
+```
+or
+```sh
+$ yarn start
 ```
 
 ### To Package & Build
@@ -27,17 +35,5 @@ $ npm start
 For Windows
 
 ```sh
-$ npm run package-win
-```
-
-For Mac
-
-```sh
-$ npm run package-mac
-```
-
-For Linux
-
-```sh
-$ npm run package-linux
+$ yarn make
 ```
